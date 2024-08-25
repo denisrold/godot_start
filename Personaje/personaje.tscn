@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dc1fe148l1wcw"]
+
+[ext_resource type="Texture2D" uid="uid://bklcf5mfm2rdw" path="res://kenney_scribble-platformer/PNG/Default/character_roundGreen.png" id="1_34jqo"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lhn1s"]
+height = 27.3455
+
+[node name="Personaje" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4.77104, 4.26933)
+texture = ExtResource("1_34jqo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(7.45783, 9.43482)
+shape = SubResource("CapsuleShape2D_lhn1s")

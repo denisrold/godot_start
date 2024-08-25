@@ -1,0 +1,211 @@
+[gd_scene load_steps=13 format=3 uid="uid://c6ldh7qlobt70"]
+
+[ext_resource type="Texture2D" uid="uid://cg57b8di4pudg" path="res://kenney_scribble-platformer/PNG/Default/background_cloudA.png" id="1_l4ckh"]
+[ext_resource type="PackedScene" uid="uid://cv3kxbchvtw2r" path="res://Ground/Ground.tscn" id="1_uhwaw"]
+[ext_resource type="PackedScene" uid="uid://bk5lbjbgjcpnq" path="res://Ground/platform.tscn" id="2_8noow"]
+[ext_resource type="Texture2D" uid="uid://t7fhhnpttunk" path="res://kenney_scribble-platformer/PNG/Default/tile_arrowRight.png" id="2_eh4n1"]
+[ext_resource type="Texture2D" uid="uid://d3ebjxdlr5dg4" path="res://kenney_scribble-platformer/PNG/Default/background_cloudB.png" id="3_5wcf2"]
+[ext_resource type="PackedScene" uid="uid://dclfa46gwy5w" path="res://Ground/short_ground.tscn" id="3_7g27r"]
+[ext_resource type="PackedScene" uid="uid://ddj0y3nx0md36" path="res://Objetos_de_mapa/barril.tscn" id="4_ckjbd"]
+[ext_resource type="Texture2D" uid="uid://btk17vkxwinpb" path="res://kenney_scribble-platformer/PNG/Default/character_squareYellow.png" id="4_tx1tw"]
+[ext_resource type="Texture2D" uid="uid://dldey4e15ax70" path="res://kenney_scribble-platformer/PNG/Default/character_squareRed.png" id="5_1wn06"]
+[ext_resource type="PackedScene" uid="uid://dc1fe148l1wcw" path="res://Personaje/personaje.tscn" id="5_tmavl"]
+[ext_resource type="Texture2D" uid="uid://q8ipcyh5tsvt" path="res://kenney_scribble-platformer/PNG/Default/character_roundPurple.png" id="6_5y52g"]
+[ext_resource type="Texture2D" uid="uid://dh6hwatkaxoel" path="res://kenney_scribble-platformer/PNG/Default/item_helmetModern.png" id="9_4oep5"]
+
+[node name="Level1" type="Node2D"]
+position = Vector2(-33, 342)
+
+[node name="Decoration" type="Node" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Decoration"]
+z_index = -1
+
+[node name="Sprite2D2" type="Sprite2D" parent="Decoration/Sprite2D"]
+
+[node name="BackgroundCloudA" type="Sprite2D" parent="Decoration/Sprite2D"]
+position = Vector2(5900, -960)
+texture = ExtResource("1_l4ckh")
+
+[node name="BackgroundCloudA2" type="Sprite2D" parent="Decoration/Sprite2D"]
+position = Vector2(358, 168)
+texture = ExtResource("1_l4ckh")
+
+[node name="BackgroundCloudA3" type="Sprite2D" parent="Decoration/Sprite2D"]
+position = Vector2(1928, 87)
+texture = ExtResource("1_l4ckh")
+
+[node name="BackgroundCloudA4" type="Sprite2D" parent="Decoration/Sprite2D"]
+position = Vector2(1148, 49)
+texture = ExtResource("1_l4ckh")
+
+[node name="BackgroundCloudA5" type="Sprite2D" parent="Decoration/Sprite2D"]
+position = Vector2(282, 168)
+texture = ExtResource("1_l4ckh")
+
+[node name="BackgroundCloudA6" type="Sprite2D" parent="Decoration/Sprite2D"]
+position = Vector2(2308, 420)
+texture = ExtResource("1_l4ckh")
+
+[node name="TileArrowRight" type="Sprite2D" parent="Decoration/Sprite2D"]
+position = Vector2(186, 884)
+rotation = -0.120482
+scale = Vector2(1.09289, 0.974038)
+skew = 0.0470536
+texture = ExtResource("2_eh4n1")
+
+[node name="BackgroundCloudB" type="Sprite2D" parent="Decoration/Sprite2D"]
+position = Vector2(989, 457)
+texture = ExtResource("3_5wcf2")
+
+[node name="BackgroundCloudA7" type="Sprite2D" parent="Decoration/Sprite2D"]
+position = Vector2(212, 561)
+texture = ExtResource("1_l4ckh")
+
+[node name="CharacterSquareYellow" type="Sprite2D" parent="Decoration/Sprite2D"]
+position = Vector2(1732, 762)
+texture = ExtResource("4_tx1tw")
+
+[node name="CharacterSquareYellow2" type="Sprite2D" parent="Decoration/Sprite2D"]
+position = Vector2(1921, 641)
+texture = ExtResource("4_tx1tw")
+
+[node name="CharacterSquareRed" type="Sprite2D" parent="Decoration/Sprite2D"]
+z_index = -1
+position = Vector2(1851, 762)
+texture = ExtResource("5_1wn06")
+
+[node name="CharacterRoundPurple" type="Sprite2D" parent="Decoration/Sprite2D"]
+position = Vector2(1485, 890)
+texture = ExtResource("6_5y52g")
+
+[node name="Barril" parent="." instance=ExtResource("4_ckjbd")]
+position = Vector2(735, -218)
+
+[node name="Barril2" parent="Barril" instance=ExtResource("4_ckjbd")]
+position = Vector2(348, 160)
+
+[node name="Barril3" parent="Barril" instance=ExtResource("4_ckjbd")]
+position = Vector2(626, 234)
+
+[node name="Barril4" parent="Barril" instance=ExtResource("4_ckjbd")]
+position = Vector2(938, 288)
+
+[node name="Barril5" parent="Barril" instance=ExtResource("4_ckjbd")]
+position = Vector2(874, 334)
+
+[node name="Barril6" parent="Barril" instance=ExtResource("4_ckjbd")]
+position = Vector2(532, 536)
+
+[node name="Barril8" parent="Barril" instance=ExtResource("4_ckjbd")]
+position = Vector2(498, 200)
+
+[node name="Barril9" parent="Barril" instance=ExtResource("4_ckjbd")]
+position = Vector2(-116, -22)
+
+[node name="Personaje" parent="." instance=ExtResource("5_tmavl")]
+position = Vector2(133, 532)
+rotation = 0.0177921
+scale = Vector2(0.250599, 0.309094)
+
+[node name="Camera2D" type="Camera2D" parent="Personaje"]
+position = Vector2(999.183, -1208.41)
+rotation = 3.12717
+scale = Vector2(60.8516, 7.20749)
+skew = -0.00751841
+
+[node name="ItemHelmetModern" type="Sprite2D" parent="Personaje"]
+position = Vector2(-5.97717, -90.5154)
+rotation = -0.0144256
+scale = Vector2(4.22556, 3.23553)
+skew = -0.00751841
+texture = ExtResource("9_4oep5")
+
+[node name="Suelos" type="Node2D" parent="."]
+
+[node name="shortGround" parent="Suelos" instance=ExtResource("3_7g27r")]
+position = Vector2(1405, 81)
+rotation = 0.258186
+scale = Vector2(1, 1)
+
+[node name="shortGround3" parent="Suelos/shortGround" instance=ExtResource("3_7g27r")]
+position = Vector2(-365.246, 3.36893)
+rotation = -0.00360652
+
+[node name="shortGround2" parent="Suelos/shortGround" instance=ExtResource("3_7g27r")]
+position = Vector2(-183.845, 0.972931)
+rotation = -0.0103944
+scale = Vector2(1, 1)
+
+[node name="shortGround4" parent="Suelos/shortGround" instance=ExtResource("3_7g27r")]
+position = Vector2(-549.293, 7.49776)
+rotation = -0.0582059
+scale = Vector2(1, 1)
+
+[node name="shortGround5" parent="Suelos/shortGround" instance=ExtResource("3_7g27r")]
+position = Vector2(253.274, 3.44641)
+rotation = -0.926192
+
+[node name="shortGround7" parent="Suelos/shortGround" instance=ExtResource("3_7g27r")]
+position = Vector2(-63.7257, 354.004)
+rotation = -0.644421
+scale = Vector2(1, 1)
+
+[node name="shortGround8" parent="Suelos/shortGround" instance=ExtResource("3_7g27r")]
+position = Vector2(-759.055, -62.2562)
+rotation = -0.10314
+scale = Vector2(1, 1)
+
+[node name="shortGround" parent="Suelos/shortGround" instance=ExtResource("3_7g27r")]
+position = Vector2(-626.827, 638.199)
+rotation = -0.478565
+scale = Vector2(2.39962, 1.05268)
+
+[node name="Platform" parent="Suelos" instance=ExtResource("2_8noow")]
+position = Vector2(1028, 465)
+
+[node name="Platform2" parent="Suelos/Platform" instance=ExtResource("2_8noow")]
+position = Vector2(372, -2)
+
+[node name="Platform3" parent="Suelos/Platform" instance=ExtResource("2_8noow")]
+position = Vector2(736, -4)
+
+[node name="Platform4" parent="Suelos/Platform" instance=ExtResource("2_8noow")]
+position = Vector2(1104, -6)
+
+[node name="Platform5" parent="Suelos/Platform" instance=ExtResource("2_8noow")]
+position = Vector2(486, -126)
+
+[node name="Platform9" parent="Suelos/Platform/Platform5" instance=ExtResource("2_8noow")]
+position = Vector2(738, -2)
+
+[node name="Platform6" parent="Suelos/Platform/Platform5" instance=ExtResource("2_8noow")]
+position = Vector2(372, 0)
+
+[node name="Platform7" parent="Suelos/Platform" instance=ExtResource("2_8noow")]
+position = Vector2(676, -248)
+
+[node name="Platform10" parent="Suelos/Platform/Platform7" instance=ExtResource("2_8noow")]
+position = Vector2(368, 0)
+
+[node name="Platform8" parent="Suelos/Platform" instance=ExtResource("2_8noow")]
+position = Vector2(948, -368)
+rotation = 0.0120103
+
+[node name="Ground" parent="Suelos" instance=ExtResource("1_uhwaw")]
+position = Vector2(464, 570)
+
+[node name="Ground2" parent="Suelos/Ground" instance=ExtResource("1_uhwaw")]
+position = Vector2(871, -2)
+
+[node name="Ground3" parent="Suelos/Ground" instance=ExtResource("1_uhwaw")]
+position = Vector2(1746, -2)
+
+[node name="Barril2" parent="." instance=ExtResource("4_ckjbd")]
+position = Vector2(620, -338)
+
+[node name="Barril3" parent="." instance=ExtResource("4_ckjbd")]
+position = Vector2(620, -439)
+
+[node name="Barril4" parent="." instance=ExtResource("4_ckjbd")]
+position = Vector2(1666, -439)
