@@ -1,0 +1,180 @@
+[gd_scene load_steps=8 format=3 uid="uid://bbmsoihm4txoa"]
+
+[ext_resource type="Texture2D" uid="uid://btk17vkxwinpb" path="res://kenney_scribble-platformer/PNG/Default/character_squareYellow.png" id="1_0v2y2"]
+[ext_resource type="Texture2D" uid="uid://cypdkfw6b3cdf" path="res://kenney_scribble-platformer/PNG/Default/character_handYellow.png" id="2_4updl"]
+[ext_resource type="Texture2D" uid="uid://cjnpohs6xvnl7" path="res://kenney_scribble-platformer/PNG/Default/effect_blastLarge.png" id="3_t5h3k"]
+
+[sub_resource type="Animation" id="Animation_u6g6s"]
+resource_name = "reposo"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/Hand:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-10, 9), Vector2(-2, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/Hand/Barrel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.176832),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_kcmfb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/Hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-10, 9)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/Hand/Barrel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Body/Hand/Barrel:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(22, 13)]
+}
+
+[sub_resource type="Animation" id="Animation_yo40c"]
+resource_name = "lanzar"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:scale")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.0333333, 0.833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1, 1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/Hand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.0333333, 0.333333, 0.833333, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-10, 9), Vector2(45, 3), Vector2(-2, -53), Vector2(41, 3)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body/Hand/Barrel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.333333, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5suec"]
+_data = {
+"RESET": SubResource("Animation_kcmfb"),
+"lanzar": SubResource("Animation_yo40c"),
+"reposo": SubResource("Animation_u6g6s")
+}
+
+[node name="Boss" type="Node2D"]
+
+[node name="Body" type="Sprite2D" parent="."]
+position = Vector2(0, -5)
+texture = ExtResource("1_0v2y2")
+
+[node name="Hand" type="Sprite2D" parent="Body"]
+position = Vector2(-10, 9)
+rotation = -1.08167
+texture = ExtResource("2_4updl")
+
+[node name="Barrel" type="Sprite2D" parent="Body/Hand"]
+visible = false
+position = Vector2(22, 13)
+scale = Vector2(0.646994, 0.646994)
+texture = ExtResource("3_t5h3k")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5suec")
+}
+autoplay = "reposo"
+
+[node name="barrel_sprit4" type="Sprite2D" parent="."]
+position = Vector2(-129, -25)
+scale = Vector2(0.534283, 0.632217)
+texture = ExtResource("3_t5h3k")
+
+[node name="barrel_sprit5" type="Sprite2D" parent="barrel_sprit4"]
+position = Vector2(71.1233, -6.32694)
+scale = Vector2(1.03147, 1.07579)
+texture = ExtResource("3_t5h3k")
+
+[node name="barrel_sprit3" type="Sprite2D" parent="barrel_sprit4"]
+position = Vector2(-33.69, 50.6155)
+scale = Vector2(1.08295, 1.03833)
+texture = ExtResource("3_t5h3k")
+
+[node name="barrel_sprit" type="Sprite2D" parent="barrel_sprit4"]
+position = Vector2(106.685, 47.4521)
+scale = Vector2(1.15232, 1.01567)
+texture = ExtResource("3_t5h3k")
+
+[node name="barrel_sprit2" type="Sprite2D" parent="barrel_sprit4"]
+position = Vector2(37.4333, 49.0338)
+scale = Vector2(1.13142, 1.0401)
+texture = ExtResource("3_t5h3k")
