@@ -1,36 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bbmsoihm4txoa"]
+[gd_scene load_steps=9 format=3 uid="uid://bbmsoihm4txoa"]
 
 [ext_resource type="Texture2D" uid="uid://btk17vkxwinpb" path="res://kenney_scribble-platformer/PNG/Default/character_squareYellow.png" id="1_0v2y2"]
+[ext_resource type="Script" path="res://boss_animated.gd" id="1_yrpvb"]
 [ext_resource type="Texture2D" uid="uid://cypdkfw6b3cdf" path="res://kenney_scribble-platformer/PNG/Default/character_handYellow.png" id="2_4updl"]
 [ext_resource type="Texture2D" uid="uid://cjnpohs6xvnl7" path="res://kenney_scribble-platformer/PNG/Default/effect_blastLarge.png" id="3_t5h3k"]
-
-[sub_resource type="Animation" id="Animation_u6g6s"]
-resource_name = "reposo"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body/Hand:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-10, 9), Vector2(-2, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Body/Hand/Barrel:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.176832),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="Animation" id="Animation_kcmfb"]
 length = 0.001
@@ -109,7 +82,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(-0.0333333, 0.333333, 0.833333, 1.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-10, 9), Vector2(45, 3), Vector2(-2, -53), Vector2(41, 3)]
+"values": [Vector2(-10, 9), Vector2(45, 3), Vector2(-2, -53), Vector2(53, 3)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -123,6 +96,48 @@ tracks/2/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"launch_barrel"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_u6g6s"]
+resource_name = "reposo"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/Hand:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-10, 9), Vector2(-2, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/Hand/Barrel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.176832),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5suec"]
 _data = {
@@ -132,6 +147,7 @@ _data = {
 }
 
 [node name="Boss" type="Node2D"]
+script = ExtResource("1_yrpvb")
 
 [node name="Body" type="Sprite2D" parent="."]
 position = Vector2(0, -5)
@@ -178,3 +194,11 @@ texture = ExtResource("3_t5h3k")
 position = Vector2(37.4333, 49.0338)
 scale = Vector2(1.13142, 1.0401)
 texture = ExtResource("3_t5h3k")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

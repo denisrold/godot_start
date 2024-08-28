@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c6ldh7qlobt70"]
+[gd_scene load_steps=17 format=3 uid="uid://c6ldh7qlobt70"]
 
 [ext_resource type="Texture2D" uid="uid://cg57b8di4pudg" path="res://kenney_scribble-platformer/PNG/Default/background_cloudA.png" id="1_l4ckh"]
 [ext_resource type="PackedScene" uid="uid://cv3kxbchvtw2r" path="res://Ground/Ground.tscn" id="1_uhwaw"]
@@ -9,11 +9,14 @@
 [ext_resource type="PackedScene" uid="uid://ddj0y3nx0md36" path="res://Objetos_de_mapa/barril.tscn" id="4_ckjbd"]
 [ext_resource type="Texture2D" uid="uid://btk17vkxwinpb" path="res://kenney_scribble-platformer/PNG/Default/character_squareYellow.png" id="4_tx1tw"]
 [ext_resource type="Texture2D" uid="uid://dldey4e15ax70" path="res://kenney_scribble-platformer/PNG/Default/character_squareRed.png" id="5_1wn06"]
-[ext_resource type="PackedScene" uid="uid://dc1fe148l1wcw" path="res://Personaje/personaje.tscn" id="5_tmavl"]
 [ext_resource type="Texture2D" uid="uid://q8ipcyh5tsvt" path="res://kenney_scribble-platformer/PNG/Default/character_roundPurple.png" id="6_5y52g"]
 [ext_resource type="Texture2D" uid="uid://dh6hwatkaxoel" path="res://kenney_scribble-platformer/PNG/Default/item_helmetModern.png" id="9_4oep5"]
-[ext_resource type="Script" path="res://Personaje/personaje.gd" id="9_83pfm"]
+[ext_resource type="Script" path="res://map/personaje.gd" id="11_1hcgd"]
+[ext_resource type="Texture2D" uid="uid://bklcf5mfm2rdw" path="res://kenney_scribble-platformer/PNG/Default/character_roundGreen.png" id="11_dmmb0"]
 [ext_resource type="Script" path="res://Personaje/CameraFollow.gd" id="13_26li1"]
+[ext_resource type="PackedScene" uid="uid://bbmsoihm4txoa" path="res://Boss_Animated.tscn" id="15_5o2mo"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uib74"]
 
 [node name="Level1" type="Node2D"]
 position = Vector2(-33, 342)
@@ -93,19 +96,6 @@ position = Vector2(641, 566)
 [node name="Barril5" parent="Barril" instance=ExtResource("4_ckjbd")]
 position = Vector2(373, 142)
 
-[node name="Personaje" parent="." instance=ExtResource("5_tmavl")]
-position = Vector2(133, 532)
-rotation = 0.0177921
-scale = Vector2(0.250599, 0.309094)
-script = ExtResource("9_83pfm")
-
-[node name="ItemHelmetModern" type="Sprite2D" parent="Personaje"]
-position = Vector2(-5.97717, -90.5154)
-rotation = -0.0144256
-scale = Vector2(4.22556, 3.23553)
-skew = -0.00751841
-texture = ExtResource("9_4oep5")
-
 [node name="Suelos" type="Node2D" parent="."]
 
 [node name="shortGround" parent="Suelos" instance=ExtResource("3_7g27r")]
@@ -176,13 +166,39 @@ position = Vector2(871, -2)
 [node name="Ground3" parent="Suelos/Ground" instance=ExtResource("1_uhwaw")]
 position = Vector2(1746, -2)
 
+[node name="Personaje" type="CharacterBody2D" parent="."]
+position = Vector2(133, 532)
+scale = Vector2(0.284425, 0.350149)
+script = ExtResource("11_1hcgd")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Personaje"]
+position = Vector2(0, 5.71186)
+rotation = 3.14159
+scale = Vector2(-3.98331, -3.633)
+texture = ExtResource("11_dmmb0")
+
+[node name="ItemHelmetModern" type="Sprite2D" parent="Personaje"]
+position = Vector2(-5.97717, -90.5154)
+rotation = -0.0144256
+scale = Vector2(4.22556, 3.23553)
+skew = -0.00751841
+texture = ExtResource("9_4oep5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Personaje"]
+scale = Vector2(6.51712, 6.51712)
+shape = SubResource("CapsuleShape2D_uib74")
+
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("object_to_follow")]
 position = Vector2(390, 163.002)
 rotation = -3.14159
 scale = Vector2(15.2502, 2.22761)
 limit_left = 0
 limit_top = 0
-limit_right = 2700
+limit_right = 2550
 limit_bottom = 1000
 script = ExtResource("13_26li1")
 object_to_follow = NodePath("../Personaje")
+
+[node name="Boss" parent="." instance=ExtResource("15_5o2mo")]
+position = Vector2(1129, -43)
+rotation = 0.271919

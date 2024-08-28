@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 @export var SPEED = 300.0
 @export var JUMP_VELOCITY = -480.0
+@onready var sprite_2d_2: Sprite2D = $Sprite2D2
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -19,8 +20,8 @@ func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("izquierda", "derecha")
 	if direction:
 		velocity.x = direction * SPEED
-	
 	else:
+	# Desacelera si no se está moviendo en ninguna dirección
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
