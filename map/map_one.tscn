@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c6ldh7qlobt70"]
+[gd_scene load_steps=18 format=3 uid="uid://c6ldh7qlobt70"]
 
 [ext_resource type="Texture2D" uid="uid://cg57b8di4pudg" path="res://kenney_scribble-platformer/PNG/Default/background_cloudA.png" id="1_l4ckh"]
 [ext_resource type="PackedScene" uid="uid://cv3kxbchvtw2r" path="res://Ground/Ground.tscn" id="1_uhwaw"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://t7fhhnpttunk" path="res://kenney_scribble-platformer/PNG/Default/tile_arrowRight.png" id="2_eh4n1"]
 [ext_resource type="Texture2D" uid="uid://d3ebjxdlr5dg4" path="res://kenney_scribble-platformer/PNG/Default/background_cloudB.png" id="3_5wcf2"]
 [ext_resource type="PackedScene" uid="uid://dclfa46gwy5w" path="res://Ground/short_ground.tscn" id="3_7g27r"]
-[ext_resource type="PackedScene" uid="uid://ddj0y3nx0md36" path="res://Objetos_de_mapa/barril.tscn" id="4_ckjbd"]
 [ext_resource type="Texture2D" uid="uid://btk17vkxwinpb" path="res://kenney_scribble-platformer/PNG/Default/character_squareYellow.png" id="4_tx1tw"]
 [ext_resource type="Texture2D" uid="uid://dldey4e15ax70" path="res://kenney_scribble-platformer/PNG/Default/character_squareRed.png" id="5_1wn06"]
 [ext_resource type="Texture2D" uid="uid://q8ipcyh5tsvt" path="res://kenney_scribble-platformer/PNG/Default/character_roundPurple.png" id="6_5y52g"]
@@ -15,8 +14,11 @@
 [ext_resource type="Texture2D" uid="uid://bklcf5mfm2rdw" path="res://kenney_scribble-platformer/PNG/Default/character_roundGreen.png" id="11_dmmb0"]
 [ext_resource type="Script" path="res://Personaje/CameraFollow.gd" id="13_26li1"]
 [ext_resource type="PackedScene" uid="uid://bbmsoihm4txoa" path="res://Boss_Animated.tscn" id="15_5o2mo"]
+[ext_resource type="Texture2D" uid="uid://35poteixknjc" path="res://kenney_scribble-platformer/PNG/Default/tile_flag.png" id="16_xsmby"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uib74"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gr1o5"]
 
 [node name="Level1" type="Node2D"]
 position = Vector2(-33, 342)
@@ -83,18 +85,6 @@ texture = ExtResource("5_1wn06")
 [node name="CharacterRoundPurple" type="Sprite2D" parent="Decoration/Sprite2D"]
 position = Vector2(1485, 890)
 texture = ExtResource("6_5y52g")
-
-[node name="Barril" parent="." instance=ExtResource("4_ckjbd")]
-position = Vector2(648, -252)
-
-[node name="Barril4" parent="Barril" instance=ExtResource("4_ckjbd")]
-position = Vector2(1334, 148)
-
-[node name="Barril2" parent="Barril" instance=ExtResource("4_ckjbd")]
-position = Vector2(641, 566)
-
-[node name="Barril5" parent="Barril" instance=ExtResource("4_ckjbd")]
-position = Vector2(373, 142)
 
 [node name="Suelos" type="Node2D" parent="."]
 
@@ -169,6 +159,8 @@ position = Vector2(1746, -2)
 [node name="Personaje" type="CharacterBody2D" parent="."]
 position = Vector2(133, 532)
 scale = Vector2(0.284425, 0.350149)
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("11_1hcgd")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Personaje"]
@@ -202,3 +194,19 @@ object_to_follow = NodePath("../Personaje")
 [node name="Boss" parent="." instance=ExtResource("15_5o2mo")]
 position = Vector2(1129, -43)
 rotation = 0.271919
+
+[node name="Flag" type="Sprite2D" parent="."]
+position = Vector2(1226, -34)
+texture = ExtResource("16_xsmby")
+
+[node name="Area2D" type="Area2D" parent="Flag"]
+position = Vector2(-7, -1)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flag/Area2D"]
+position = Vector2(5, 2)
+scale = Vector2(2.80699, 2.80699)
+shape = SubResource("RectangleShape2D_gr1o5")
+
+[connection signal="body_entered" from="Flag/Area2D" to="Personaje" method="_on_area_2d_body_entered"]

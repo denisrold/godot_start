@@ -40,6 +40,12 @@ izquierda={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Plataformas"
+2d_physics/layer_2="Personajes"
+2d_physics/layer_3="Enemigos"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

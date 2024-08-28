@@ -1,16 +1,23 @@
 [gd_scene load_steps=4 format=3 uid="uid://ddj0y3nx0md36"]
 
-[ext_resource type="Texture2D" uid="uid://ctiibt4dfv70a" path="res://kenney_scribble-platformer/PNG/Default/effect_blast.png" id="1_qfoob"]
 [ext_resource type="Script" path="res://Objetos_de_mapa/barril.gd" id="1_yeqpl"]
+[ext_resource type="Texture2D" uid="uid://dqxwd2psr6mnx" path="res://kenney_scribble-platformer/PNG/Retina/tile_coin.png" id="2_tt5dk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tc8vt"]
 
 [node name="Barril" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 7
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_yeqpl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_qfoob")
+scale = Vector2(0.64497, 0.64497)
+texture = ExtResource("2_tt5dk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1.81284, 1.81284)
 shape = SubResource("CircleShape2D_tc8vt")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
