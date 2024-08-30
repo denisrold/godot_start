@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c6ldh7qlobt70"]
+[gd_scene load_steps=22 format=3 uid="uid://c6ldh7qlobt70"]
 
 [ext_resource type="Texture2D" uid="uid://cg57b8di4pudg" path="res://kenney_scribble-platformer/PNG/Default/background_cloudA.png" id="1_l4ckh"]
 [ext_resource type="PackedScene" uid="uid://cv3kxbchvtw2r" path="res://Ground/Ground.tscn" id="1_uhwaw"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://35poteixknjc" path="res://kenney_scribble-platformer/PNG/Default/tile_flag.png" id="16_xsmby"]
 [ext_resource type="Script" path="res://ui/ui_time_life.gd" id="17_err3s"]
 [ext_resource type="Script" path="res://map/game_controller.gd" id="17_x2uqi"]
+[ext_resource type="PackedScene" uid="uid://ddj0y3nx0md36" path="res://Objetos_de_mapa/barril.tscn" id="19_l3tit"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uib74"]
 
@@ -228,7 +229,21 @@ script = ExtResource("17_err3s")
 position = Vector2(33, -342)
 script = ExtResource("17_x2uqi")
 
+[node name="Timer" type="Timer" parent="GameController"]
+autostart = true
+
+[node name="Barril" parent="." instance=ExtResource("19_l3tit")]
+position = Vector2(1129, -32)
+
+[node name="Barril2" parent="." instance=ExtResource("19_l3tit")]
+position = Vector2(1301, 336)
+
+[node name="Barril3" parent="." instance=ExtResource("19_l3tit")]
+position = Vector2(1683, 66)
+
 [connection signal="player_hit" from="Personaje" to="GameController" method="_on_personaje_player_hit"]
 [connection signal="body_entered" from="Flag/Area2D" to="Personaje" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Flag/Area2D" to="GameController" method="_on_area_2d_body_entered"]
 [connection signal="player_health_updated" from="GameController" to="CanvasLayer" method="_on_game_controller_player_health_updated"]
+[connection signal="time_updated" from="GameController" to="CanvasLayer" method="_on_game_controller_time_updated"]
+[connection signal="timeout" from="GameController/Timer" to="GameController" method="_on_timer_timeout"]
