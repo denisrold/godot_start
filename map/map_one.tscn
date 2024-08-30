@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c6ldh7qlobt70"]
+[gd_scene load_steps=21 format=3 uid="uid://c6ldh7qlobt70"]
 
 [ext_resource type="Texture2D" uid="uid://cg57b8di4pudg" path="res://kenney_scribble-platformer/PNG/Default/background_cloudA.png" id="1_l4ckh"]
 [ext_resource type="PackedScene" uid="uid://cv3kxbchvtw2r" path="res://Ground/Ground.tscn" id="1_uhwaw"]
@@ -14,7 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://bklcf5mfm2rdw" path="res://kenney_scribble-platformer/PNG/Default/character_roundGreen.png" id="11_dmmb0"]
 [ext_resource type="Script" path="res://Personaje/CameraFollow.gd" id="13_26li1"]
 [ext_resource type="PackedScene" uid="uid://bbmsoihm4txoa" path="res://Boss_Animated.tscn" id="15_5o2mo"]
+[ext_resource type="PackedScene" uid="uid://18gs565i5w6g" path="res://ui/UI_TIME_LIFE.tscn" id="16_tccet"]
 [ext_resource type="Texture2D" uid="uid://35poteixknjc" path="res://kenney_scribble-platformer/PNG/Default/tile_flag.png" id="16_xsmby"]
+[ext_resource type="Script" path="res://ui/ui_time_life.gd" id="17_err3s"]
+[ext_resource type="Script" path="res://map/game_controller.gd" id="17_x2uqi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uib74"]
 
@@ -44,6 +47,14 @@ texture = ExtResource("1_l4ckh")
 
 [node name="BackgroundCloudA4" type="Sprite2D" parent="Decoration/Sprite2D"]
 position = Vector2(1148, 49)
+texture = ExtResource("1_l4ckh")
+
+[node name="BackgroundCloudA4" type="Sprite2D" parent="Decoration/Sprite2D/BackgroundCloudA4"]
+position = Vector2(-325, -128)
+texture = ExtResource("1_l4ckh")
+
+[node name="BackgroundCloudA4" type="Sprite2D" parent="Decoration/Sprite2D/BackgroundCloudA4/BackgroundCloudA4"]
+position = Vector2(75, 0)
 texture = ExtResource("1_l4ckh")
 
 [node name="BackgroundCloudA5" type="Sprite2D" parent="Decoration/Sprite2D"]
@@ -113,7 +124,7 @@ position = Vector2(-63.7257, 354.004)
 rotation = -0.644421
 
 [node name="shortGround8" parent="Suelos/shortGround" instance=ExtResource("3_7g27r")]
-position = Vector2(-759.055, -62.2562)
+position = Vector2(-776.723, -187.91)
 rotation = -0.10314
 
 [node name="Platform" parent="Suelos" instance=ExtResource("2_8noow")]
@@ -181,22 +192,23 @@ scale = Vector2(6.51712, 6.51712)
 shape = SubResource("CapsuleShape2D_uib74")
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("object_to_follow")]
-position = Vector2(390, 163.002)
+position = Vector2(390, 163)
 rotation = -3.14159
 scale = Vector2(15.2502, 2.22761)
 limit_left = 0
-limit_top = 0
+limit_top = -120
 limit_right = 2550
 limit_bottom = 1000
 script = ExtResource("13_26li1")
 object_to_follow = NodePath("../Personaje")
 
 [node name="Boss" parent="." instance=ExtResource("15_5o2mo")]
-position = Vector2(1129, -43)
-rotation = 0.271919
+position = Vector2(777, -338)
+rotation = 0.157011
 
 [node name="Flag" type="Sprite2D" parent="."]
-position = Vector2(1226, -34)
+position = Vector2(895, -103)
+rotation = 0.238065
 texture = ExtResource("16_xsmby")
 
 [node name="Area2D" type="Area2D" parent="Flag"]
@@ -209,4 +221,14 @@ position = Vector2(5, 2)
 scale = Vector2(2.80699, 2.80699)
 shape = SubResource("RectangleShape2D_gr1o5")
 
+[node name="CanvasLayer" parent="." instance=ExtResource("16_tccet")]
+script = ExtResource("17_err3s")
+
+[node name="GameController" type="Node2D" parent="."]
+position = Vector2(33, -342)
+script = ExtResource("17_x2uqi")
+
+[connection signal="player_hit" from="Personaje" to="GameController" method="_on_personaje_player_hit"]
 [connection signal="body_entered" from="Flag/Area2D" to="Personaje" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Flag/Area2D" to="GameController" method="_on_area_2d_body_entered"]
+[connection signal="player_health_updated" from="GameController" to="CanvasLayer" method="_on_game_controller_player_health_updated"]

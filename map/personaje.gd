@@ -1,10 +1,12 @@
-class_name Personaje
+class_name miPersonaje
 
 extends CharacterBody2D
 
 @export var SPEED = 300.0
 @export var JUMP_VELOCITY = -480.0
 @onready var sprite_2d_2: Sprite2D = $Sprite2D2
+
+signal player_hit()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -32,3 +34,4 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func damage_received():
 	print('daño recibido')
+	player_hit.emit()
