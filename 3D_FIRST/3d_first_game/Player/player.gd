@@ -18,6 +18,11 @@ var vel = Vector3()
 
 @onready var camera = $Pivote
 @onready var attackCast = $AttackRayCast
+@onready var UI = $Interfaz/UI
+
+func _ready() -> void:
+	UI.Update_Gold_text(gold)
+	UI.update_health_bar(curHp,maxHp)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -59,10 +64,11 @@ func try_attack():
 
 func give_gold(goldToGive:int):
 	gold+=goldToGive
+	UI.Update_Gold_text(gold)
 
 func take_damage(damageRecibed):
 	curHp -= damageRecibed
-	print(curHp)
+	UI.update_health_bar(curHp,maxHp)
 	if curHp <= 0:
 		die()
 

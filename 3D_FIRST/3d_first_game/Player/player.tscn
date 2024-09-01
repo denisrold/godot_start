@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bctfgpt1xn8l5"]
+[gd_scene load_steps=10 format=3 uid="uid://bctfgpt1xn8l5"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_mjv8o"]
 [ext_resource type="Script" path="res://Player/pivote.gd" id="1_uc5ax"]
 [ext_resource type="PackedScene" uid="uid://bias28npqav8q" path="res://Assets/GodotActionRPG-Assets/Models/Sword.dae" id="1_wpmi4"]
+[ext_resource type="PackedScene" uid="uid://dedtrlu1m65l3" path="res://UI/ui.tscn" id="4_7n4a4"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_btpgg"]
 
@@ -68,7 +69,7 @@ current = true
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.58, 1, 0.035)
 
 [node name="Sword" parent="WeaponHolder" instance=ExtResource("1_wpmi4")]
-transform = Transform3D(-6.91133e-09, 1.4084e-08, 0.15, -0.00375381, 0.149953, -1.42526e-08, -0.149953, -0.00375381, -6.55671e-09, 0, 0, 0)
+transform = Transform3D(-5.43185e-07, 6.59383e-10, 0.15, -0.00375381, 0.149953, -1.42526e-08, -0.149953, -0.00375381, -5.42999e-07, 0, 0, 0)
 
 [node name="SwordAnimator" type="AnimationPlayer" parent="WeaponHolder"]
 libraries = {
@@ -78,3 +79,7 @@ libraries = {
 [node name="AttackRayCast" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, 0.181034, 1.00001, -0.178399)
 target_position = Vector3(0, 0, 1.5)
+
+[node name="Interfaz" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="Interfaz" instance=ExtResource("4_7n4a4")]

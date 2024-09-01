@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://dedtrlu1m65l3"]
+
+[ext_resource type="Texture2D" uid="uid://bn7hue07w26hg" path="res://Assets/GodotActionRPG-Assets/UI/UI_WhiteSquare.png" id="1_v434o"]
+[ext_resource type="Script" path="res://UI/ui.gd" id="1_x3b0l"]
+[ext_resource type="FontFile" uid="uid://dlcttftkpwqag" path="res://Assets/GodotActionRPG-Assets/Font/Ubuntu-Regular.ttf" id="2_vfu38"]
+
+[sub_resource type="Theme" id="Theme_7vksy"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = -72.0
+offset_right = 28.0
+offset_bottom = -72.0
+grow_vertical = 0
+size_flags_horizontal = 4
+script = ExtResource("1_x3b0l")
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(7.47727, 0.897273)
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("1_v434o")
+texture_progress = ExtResource("1_v434o")
+tint_under = Color(0.376471, 0.466667, 0.529412, 1)
+tint_progress = Color(1, 0, 0, 1)
+
+[node name="GoldLabel" type="Label" parent="."]
+layout_mode = 0
+offset_top = -38.0
+offset_right = 136.0
+offset_bottom = 11.0
+theme = SubResource("Theme_7vksy")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_vfu38")
+theme_override_font_sizes/font_size = 30
+text = "Gold: 500
+"
