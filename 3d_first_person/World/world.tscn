@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://kj6utfq74gas"]
+[gd_scene load_steps=18 format=3 uid="uid://kj6utfq74gas"]
 
 [ext_resource type="ArrayMesh" uid="uid://paecwnaptmao" path="res://GodotFPS-Assets/Models/Environment/Ground.obj" id="1_37ndk"]
 [ext_resource type="ArrayMesh" uid="uid://cwl4r231nl6ev" path="res://GodotFPS-Assets/Models/Environment/Tree_1.obj" id="2_clqau"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ce3u4xjr2umux" path="res://Enemigo/enemigo.tscn" id="5_kpfgb"]
 [ext_resource type="PackedScene" uid="uid://csisl6awts0f6" path="res://PickUps/pick_up_ammo.tscn" id="6_noady"]
 [ext_resource type="PackedScene" uid="uid://bfef2rqma1o0m" path="res://PickUps/pick_up_vida.tscn" id="7_tw3u6"]
+[ext_resource type="PackedScene" uid="uid://cfnp30hp4dkt7" path="res://IU/ui.tscn" id="8_t5k7s"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7xng6"]
 sky_top_color = Color(0.184314, 0.760784, 1, 1)
@@ -113,7 +114,7 @@ skeleton = NodePath("../..")
 shape = SubResource("ConcavePolygonShape3D_q68kj")
 
 [node name="Player" parent="." instance=ExtResource("4_2wqp0")]
-transform = Transform3D(-0.0418059, 0, 0.999126, 0, 1, 0, -0.999126, 0, -0.0418059, 4.176, 0.30574, -7.875)
+transform = Transform3D(0.544302, 0, -0.838889, 0, 1, 0, 0.838889, 0, 0.544302, 4.176, 0.30574, -7.875)
 
 [node name="Enemigo" parent="." instance=ExtResource("5_kpfgb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.1075, 1.10826, -5.95342)
@@ -131,7 +132,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0667, 1.05, -25.8)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.0835, 1.05, -12.382)
 
 [node name="Pickup" parent="." instance=ExtResource("6_noady")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.508, 1, -12.096)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.9491, -0.187459, -9.14349)
 
 [node name="Pickup2" parent="." instance=ExtResource("7_tw3u6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.942, 1.25, -14.639)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.942, 0.703317, -20.8785)
+
+[node name="UI" parent="." instance=ExtResource("8_t5k7s")]

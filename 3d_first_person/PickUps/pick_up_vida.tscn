@@ -5,5 +5,8 @@
 
 [node name="Pickup" instance=ExtResource("1_rwewv")]
 
+[node name="CollisionShape3D" parent="PickUp" index="1"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
 [node name="HealthPackModel" parent="PickUp/Mesh" index="0" instance=ExtResource("2_axa5k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
