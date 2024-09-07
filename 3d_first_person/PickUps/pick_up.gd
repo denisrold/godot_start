@@ -26,10 +26,9 @@ func _on_body_entered(body: Node3D) -> void:
 		queue_free()
 
 func  pickup(body):
+	if objeto == Tipo_De_Objeto.Ammo:
+		body.add_ammo(ammount)
+		print("entre en ammo")
 	if objeto == Tipo_De_Objeto.Health:
 		print("entre en vida")
 		body.agregar_vida(ammount);
-		
-	elif objeto == Tipo_De_Objeto.Ammo:
-		body.add_ammo(ammount)
-		print("entre en ammo")

@@ -2,30 +2,12 @@
 
 [ext_resource type="Script" path="res://PickUps/pick_up.gd" id="1_qnwj1"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_6b1ed"]
-
-[sub_resource type="Animation" id="Animation_gu3fd"]
-resource_name = "ready"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Mesh:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.466667, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0.5, 0), Vector3(0, 0, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_tpven"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Mesh:position")
+tracks/0/path = NodePath("Mesh:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -35,26 +17,44 @@ tracks/0/keys = {
 "values": [Vector3(0, 0.5, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_gu3fd"]
+resource_name = "ready"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.466667, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.5, 0), Vector3(0, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lakvb"]
 _data = {
 "RESET": SubResource("Animation_tpven"),
 "ready": SubResource("Animation_gu3fd")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_6b1ed"]
+
 [node name="Pickup" type="Node3D"]
 
 [node name="PickUp" type="Area3D" parent="."]
 script = ExtResource("1_qnwj1")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PickUp"]
-shape = SubResource("BoxShape3D_6b1ed")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PickUp"]
 libraries = {
 "": SubResource("AnimationLibrary_lakvb")
 }
 
-[node name="Mesh" type="Node3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PickUp"]
+shape = SubResource("BoxShape3D_6b1ed")
+
+[node name="Mesh" type="Node3D" parent="PickUp"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [connection signal="body_entered" from="PickUp" to="PickUp" method="_on_body_entered"]
