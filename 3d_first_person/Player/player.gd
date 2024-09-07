@@ -82,3 +82,18 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+
+
+func add_score(puntosQueda):
+	score += puntosQueda
+
+func take_damage(damaged) : 
+	saludAhora -= damaged
+	if saludAhora <= 0:
+		get_tree().reload_current_scene()
+
+func agregar_vida(vida):
+	saludAhora = clamp(saludAhora + vida , 0 , saludMax)
+
+func add_ammo(municion):
+	ammo += municion

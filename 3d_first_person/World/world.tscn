@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://kj6utfq74gas"]
+[gd_scene load_steps=15 format=3 uid="uid://kj6utfq74gas"]
 
 [ext_resource type="ArrayMesh" uid="uid://paecwnaptmao" path="res://GodotFPS-Assets/Models/Environment/Ground.obj" id="1_37ndk"]
 [ext_resource type="ArrayMesh" uid="uid://cwl4r231nl6ev" path="res://GodotFPS-Assets/Models/Environment/Tree_1.obj" id="2_clqau"]
 [ext_resource type="ArrayMesh" uid="uid://nwaqnahvuv2f" path="res://GodotFPS-Assets/Models/Environment/Tree_2.obj" id="3_4qyd2"]
 [ext_resource type="PackedScene" uid="uid://c1h0hhf0xaop2" path="res://Player/player.tscn" id="4_2wqp0"]
+[ext_resource type="PackedScene" uid="uid://ce3u4xjr2umux" path="res://Enemigo/enemigo.tscn" id="5_kpfgb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7xng6"]
 sky_top_color = Color(0.184314, 0.760784, 1, 1)
@@ -111,3 +112,18 @@ shape = SubResource("ConcavePolygonShape3D_q68kj")
 
 [node name="Player" parent="." instance=ExtResource("4_2wqp0")]
 transform = Transform3D(-0.0418059, 0, 0.999126, 0, 1, 0, -0.999126, 0, -0.0418059, 4.17646, 1.0237, -7.87511)
+
+[node name="Enemigo" parent="." instance=ExtResource("5_kpfgb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.1075, 1.10826, -5.95342)
+
+[node name="Enemigo5" parent="." instance=ExtResource("5_kpfgb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.463, 1.05, -19.6667)
+
+[node name="Enemigo2" parent="." instance=ExtResource("5_kpfgb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0984, 1.29651, -25.0822)
+
+[node name="Enemigo3" parent="." instance=ExtResource("5_kpfgb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0667, 1.05, -25.8)
+
+[node name="Enemigo4" parent="." instance=ExtResource("5_kpfgb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.0835, 1.05, -12.382)
